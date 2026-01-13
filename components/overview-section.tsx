@@ -2,21 +2,19 @@
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
 
-const data = [
-  { name: "Tribe A", value: 28 },
-  { name: "Tribe B", value: 24 },
-  { name: "Tribe C", value: 26 },
-  { name: "Tribe D", value: 22 },
-]
+interface OverviewSectionProps {
+  data: { name: string; value: number }[]
+  totalTribes: number
+}
 
-export default function OverviewSection() {
+export default function OverviewSection({ data, totalTribes }: OverviewSectionProps) {
   return (
     <div className="bg-card rounded-3xl border border-border shadow-sm p-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         <div>
           <h3 className="text-xl font-semibold text-foreground mb-2">Overview</h3>
-          <p className="text-4xl font-bold text-foreground mb-4">4 Unique Tribes</p>
-          <p className="text-muted-foreground">Based on behavioral and demographic analysis of 15,000 customers.</p>
+          <p className="text-4xl font-bold text-foreground mb-4">{totalTribes} Unique Tribes</p>
+          <p className="text-muted-foreground">Based on behavioral and demographic analysis of live customers.</p>
         </div>
 
         {/* Chart placeholder */}

@@ -14,16 +14,17 @@ interface Tribe {
 
 interface TribeCardProps {
   tribe: Tribe
+  onClick?: () => void
 }
 
 const badgeColors: Record<string, { bg: string; text: string }> = {
-  "Tribe A": { bg: "bg-blue-100", text: "text-blue-700" },
-  "Tribe B": { bg: "bg-purple-100", text: "text-purple-700" },
-  "Tribe C": { bg: "bg-emerald-100", text: "text-emerald-700" },
-  "Tribe D": { bg: "bg-amber-100", text: "text-amber-700" },
+  "Mid-Career Grinders": { bg: "bg-blue-100", text: "text-blue-700" },
+  "Young Families": { bg: "bg-purple-100", text: "text-purple-700" },
+  "Solo Starters": { bg: "bg-emerald-100", text: "text-emerald-700" },
+  "Wealthy Seniors": { bg: "bg-amber-100", text: "text-amber-700" },
 }
 
-export default function TribeCard({ tribe }: TribeCardProps) {
+export default function TribeCard({ tribe, onClick }: TribeCardProps) {
   const colors = badgeColors[tribe.name] || { bg: "bg-gray-100", text: "text-gray-700" }
 
   return (
@@ -50,7 +51,10 @@ export default function TribeCard({ tribe }: TribeCardProps) {
       </div>
 
       {/* Button */}
-      <button className="mt-4 w-full bg-muted hover:bg-muted/80 text-foreground py-2 rounded-lg text-sm font-medium transition-colors">
+      <button
+        onClick={onClick}
+        className="mt-4 w-full bg-muted hover:bg-muted/80 text-foreground py-2 rounded-lg text-sm font-medium transition-colors"
+      >
         View Persona Details
       </button>
     </div>
